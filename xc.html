@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>xc</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,
+			html {
+				margin: 0;
+				padding: 0;
+			}
+			
+			
+			table thead,
+			tbody tr {
+				width: 100%;
+				/*table-layout:fixed;*/
+				color: #FFFFFF;
+				font-size: 1.3rem;
+			}
+
+			td {
+				text-align: center;
+				/*设置水平居中*/
+				vertical-align: middle;
+				/*设置垂直居中*/
+				border-bottom: 1px solid #F1F1F1;
+				color: #CFD3D8;
+			}
+			
+			tr {
+				height: 3rem;
+			}
+
+			
+			.bigbox {
+				width: 95%;
+				margin: 0 auto;
+			}
+			.hideName{
+				display: none;
+			}
+			.blockName{
+				display: block;
+			}
+
+			
+			.title img {
+				width: 45%;
+				vertical-align: middle;
+			}
+			
+			.bg {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				left: 0px;
+				top: 0px;
+				background: url(img/背景.png) no-repeat center;
+				background-size: cover;
+			}
+			.img {
+				background: url(img/原料出库.png) no-repeat;
+				background-size: 100% 100%;
+				padding: 3% 5%;
+			}
+			.img1 {
+				background: url(img/原料入库.png) no-repeat;
+				background-size: 100% 100%;
+				padding: 3% 5%;
+				margin-top: 2%;
+			}
+			.img2 {
+				background: url(img/销售退货.png) no-repeat;
+				background-size: 100% 100%;
+				padding: 3% 5%;
+			}
+			.img3 {
+				background: url(img/成品包装入库.png) no-repeat;
+				background-size: 100% 100%;
+				padding: 3% 5%;
+			}
+			.leftNav{
+				position: absolute;
+				top: 30%;
+				left: 0;
+				font-size: 20px;
+				text-align: center;
+			}
+			.leftNav div{
+				text-decoration: none;
+				background-color: #0287F5;
+				width:20px;
+				cursor:pointer;
+				padding: 5px;
+			}
+			.leftNav div:nth-child(2){
+				border-top: 2px solid white;
+				border-bottom: 2px solid white;
+			}
+			@media (min-width: 300px) {
+				html{
+					font-size: 10px;
+				}
+			}
+			@media (min-width: 600px) {
+				html{
+					font-size: 12px;
+				}
+			}
+			@media (min-width: 900px) {
+				html{
+					font-size: 14px;
+				}
+			}
+			@media (min-width: 1200px) {
+				html{
+					font-size: 15px;
+				}
+			}
+			@media (min-width: 2000px) {
+				html{
+					font-size: 18px;
+				}
+			}
+			@media (min-width: 3000px) {
+				html{
+					font-size: 40px;
+				}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="bg">
+			<div class="leftNav">
+				<div class="tap1">成品包装入库</div>
+				<div class="tap2">销售退货</div>
+				<div class="tap3">原料出 &nbsp;/入库</div>
+			</div>
+			<div class="title">
+				<img src="img/平湖新仓.png" style="width: 26%;margin-right: 5rem;"/>
+				<img src="img/看板标题.png"/>
+			</div>
+			<div class="box">
+				<div class="bigbox blockName">
+					<div class="img">
+						<table id="table" cellpadding="0" cellspacing="0" width="100%" height="100%">
+							<tbody>
+								<tr>
+									<th>品名</th>
+									<th>规格</th>
+									<th>采购订单数量</th>
+									<th>今日到货数量</th>
+									<th>原库存</th>
+									<th>到货后库存</th>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>已入我就是我我就是我我就是我库</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+	
+					<div class="img1">
+						<table id="table1" cellpadding="0" cellspacing="0" width="100%" height="100%">
+							<tbody>
+								<tr>
+									<th>品名</th>
+									<th>规格</th>
+									<th>客户名称</th>
+									<th>出库数量</th>
+									<th>剩余库存</th>
+								</tr>
+								<tr>
+									<td>我就  是我我   就是我</td>
+									<td>我就是我我就是我</td>
+									<td>我就是我我就</td>
+									<td>已入库</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1我就   是我我就    是我</td>
+									<td>已入库我就是我我就是我</td>
+									<td>我就是我我就是我我就是我</td>
+									<td>已入库</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我</td>
+									<td>已入库我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>已入库</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我</td>
+									<td>已入库我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>已入库</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="bigbox hideName">
+					<div class="img2">
+						<table id="table" cellpadding="0" cellspacing="0" width="100%" height="100%">
+							<tbody>
+								<tr>
+									<th>客户名称</th>
+									<th>品名</th>
+									<th>款号</th>
+									<th>数量</th>
+									<th>原因</th>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>已入我就是我我就是我我就是我库</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>我就是我我就是我我我就是我我就是我我就是我我就是我</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="box_bottom"></div>
+				</div>
+				
+				<div class="bigbox hideName">
+					<div class="img3">
+						<table id="table" cellpadding="0" cellspacing="0" width="100%" height="100%">
+							<tbody>
+								<tr>
+									<th>品名</th>
+									<th>规格</th>
+									<th>采购订单数量</th>
+									<th>今日到货数量</th>
+									<th>原库存</th>
+									<th>到货后库存</th>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>已入我就是我我就是我我就是我库</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+								<tr>
+									<td>1我就是我我就是我我就是我</td>
+									<td>我就是我我就是我我就是我我就是我</td>
+									<td>0001</td>
+									<td>已入库</td>
+									<td>已入库</td>
+									<td>已入库</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//	$(".leftNav div").on("click",function(){
+//		var index = $(this).index();
+//		$(this).addClass('block').siblings().removeClass('block');
+//      $('.box .bigbox').eq(index).show().siblings().hide();
+//	})
+	$(function(){
+		var len = $(".leftNav div").length
+		for(var i = 0; i < len ;i++){
+			
+		}
+		console.log($(".leftNav div").length)
+	})
+	
+
+	var total =window.innerHeight;
+	var total1 =window.innerWidth;
+	document.getElementById("box_bottom").style.height = total  / 3 -30 + "px";
+	document.getElementById("box_bottom").style.width = total1 + "px";
+	var myChartDayLine = echarts.init(document.getElementById('box_bottom'));
+    myChartDayLine.clear();
+    var times =  ['8','9','10','11','12','13','14'];
+    var sum= [10,20,35,42,65,85,120];
+    myChartDayLine.setOption({
+        tooltip: {
+            show:false
+        },
+        color: ['yellow'],
+        legend: {
+            data: ['生产量'],
+            right: '15%',
+            textStyle: {
+                fontSize: 20,
+                fontFamily: '黑体',
+                color:'white'
+            }
+        },
+        animation: false,
+        xAxis: {
+            type: 'category',
+            data: times,
+            boundaryGap: false,
+            nameTextStyle: {
+                fontSize: 24,
+                fontFamily: '黑体',
+            },
+            axisLabel: {
+                textStyle: {
+                    fontSize: 20,
+                    fontFamily: '黑体',
+                    color:'white'
+                }
+            },
+            axisLine:{
+                lineStyle:{
+                    color:'white'
+                }
+            },
+            axisTick: {
+                show: true,
+                inside:true,
+                length:7,
+                lineStyle:{
+                    color:'white'
+                }
+            }
+        },
+        yAxis: {
+            show: false,
+            nameTextStyle: {
+                fontSize: 24,
+                fontFamily: '黑体'
+            },
+            axisLabel: {
+                textStyle: {
+                    fontSize: 20,
+                    fontFamily: '黑体',
+                    color:'white'
+                }
+            },
+            axisTick: {
+                show: false,
+            }
+        },
+        series: [{
+            name: '生产量',
+            type: 'line',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top',
+                    textStyle: {
+                        fontSize: 18,
+                        color: 'white'
+                    },
+                    formatter: function (params) {
+                        return params.value > 0 ? params.value : '';
+                    }
+                }
+            },
+            symbol:'circle',
+            symbolSize:10,
+            itemStyle:{
+                normal:{
+                    color:'yellow',
+                    barBorderRadius:0
+                }
+            },
+            data: sum
+        }]
+    });
+
+			
+		</script>
+	</body>
+
+</html>
