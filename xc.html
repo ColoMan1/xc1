@@ -102,6 +102,9 @@
 				border-top: 2px solid white;
 				border-bottom: 2px solid white;
 			}
+			.act{
+				color: red;
+			}
 			@media (min-width: 300px) {
 				html{
 					font-size: 10px;
@@ -119,7 +122,7 @@
 			}
 			@media (min-width: 1200px) {
 				html{
-					font-size: 15px;
+					font-size: 11px;
 				}
 			}
 			@media (min-width: 2000px) {
@@ -139,16 +142,16 @@
 	<body>
 		<div class="bg">
 			<div class="leftNav">
-				<div class="tap1">成品包装入库</div>
-				<div class="tap2">销售退货</div>
-				<div class="tap3">原料出 &nbsp;/入库</div>
+				<div class="act">原料出 &nbsp;/入库</div>
+				<div class="">销售退货</div>
+				<div class="">成品包装入库</div>
 			</div>
 			<div class="title">
 				<img src="img/平湖新仓.png" style="width: 26%;margin-right: 5rem;"/>
 				<img src="img/看板标题.png"/>
 			</div>
 			<div class="box">
-				<div class="bigbox blockName">
+				<div class="bigbox">
 					<div class="img">
 						<table id="table" cellpadding="0" cellspacing="0" width="100%" height="100%">
 							<tbody>
@@ -368,6 +371,7 @@
 							</tbody>
 						</table>
 					</div>
+					<div id="box_bottom1"></div>
 				</div>
 			</div>
 		</div>
@@ -379,19 +383,65 @@
 //		$(this).addClass('block').siblings().removeClass('block');
 //      $('.box .bigbox').eq(index).show().siblings().hide();
 //	})
-	$(function(){
-		var len = $(".leftNav div").length
-		for(var i = 0; i < len ;i++){
-			
+	/*$(function(){
+		var index = 0;
+		var time = '';
+		var len = $(".leftNav div").length;
+		function tap (){
+			$('.box .bigbox').addClass('block').siblings().removeClass('block');
+	      	$('.box .bigbox').eq(index).show().siblings().hide();
+		};
+		function change(){
+			$(".leftNav div").each(function(i,e){
+			    $(".box .bigbox").eq(i).removeClass('blockName')
+			    $(".leftNav div").eq(i).removeClass('act')
+				$(".box .bigbox").eq(index).addClass('hideName')
+			});
+			$(".box .bigbox").eq(index).addClass('blockName')
+			$(".leftNav div").eq(index).addClass('act')
 		}
-		console.log($(".leftNav div").length)
-	})
-	
+		function autoplay() {
+            time = setInterval(function() {
+                index++;
+                if (index >= len) {
+                	index = 0;
+        			console.log(index);
+                }
+                change();
+            }, 2000);
+        }
+        console.log(len);
+        autoplay()
+	})*/
+	var index = 0;
+	var len = $(".leftNav div").length;
+
+	function change(){
+		$(".leftNav div").each(function(i,e){
+		    //$(".box .bigbox").eq(i).removeClass('blockName')
+			//$(".box .bigbox").eq(i).addClass('hideName')
+			$(".box .bigbox").eq(i).hide(2000);
+		});
+		$(".box .bigbox").eq(index).show(2000)
+	}
+	function autoplay() {
+        time = setInterval(function() {
+            index++;
+            if (index >= len) {
+            	index = 0;
+    			console.log(index);
+            }
+            change();
+        }, 3000);
+    }
+	autoplay()
 
 	var total =window.innerHeight;
 	var total1 =window.innerWidth;
 	document.getElementById("box_bottom").style.height = total  / 3 -30 + "px";
 	document.getElementById("box_bottom").style.width = total1 + "px";
+	document.getElementById("box_bottom1").style.height = total  / 3 -30 + "px";
+	document.getElementById("box_bottom1").style.width = total1 + "px";
 	var myChartDayLine = echarts.init(document.getElementById('box_bottom'));
     myChartDayLine.clear();
     var times =  ['8','9','10','11','12','13','14'];
@@ -485,7 +535,101 @@
         }]
     });
 
-			
+		
+
+
+		var myChartDayLine = echarts.init(document.getElementById('box_bottom1'));
+    myChartDayLine.clear();
+    var times =  ['8','9','10','11','12','13','14'];
+    var sum= [10,20,35,42,65,85,120];
+    myChartDayLine.setOption({
+        tooltip: {
+            show:false
+        },
+        color: ['yellow'],
+        legend: {
+            data: ['生产量'],
+            right: '15%',
+            textStyle: {
+                fontSize: 20,
+                fontFamily: '黑体',
+                color:'white'
+            }
+        },
+        animation: false,
+        xAxis: {
+            type: 'category',
+            data: times,
+            boundaryGap: false,
+            nameTextStyle: {
+                fontSize: 24,
+                fontFamily: '黑体',
+            },
+            axisLabel: {
+                textStyle: {
+                    fontSize: 20,
+                    fontFamily: '黑体',
+                    color:'white'
+                }
+            },
+            axisLine:{
+                lineStyle:{
+                    color:'white'
+                }
+            },
+            axisTick: {
+                show: true,
+                inside:true,
+                length:7,
+                lineStyle:{
+                    color:'white'
+                }
+            }
+        },
+        yAxis: {
+            show: false,
+            nameTextStyle: {
+                fontSize: 24,
+                fontFamily: '黑体'
+            },
+            axisLabel: {
+                textStyle: {
+                    fontSize: 20,
+                    fontFamily: '黑体',
+                    color:'white'
+                }
+            },
+            axisTick: {
+                show: false,
+            }
+        },
+        series: [{
+            name: '生产量',
+            type: 'line',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top',
+                    textStyle: {
+                        fontSize: 18,
+                        color: 'white'
+                    },
+                    formatter: function (params) {
+                        return params.value > 0 ? params.value : '';
+                    }
+                }
+            },
+            symbol:'circle',
+            symbolSize:10,
+            itemStyle:{
+                normal:{
+                    color:'yellow',
+                    barBorderRadius:0
+                }
+            },
+            data: sum
+        }]
+    });	
 		</script>
 	</body>
 
